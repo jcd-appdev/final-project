@@ -1,0 +1,36 @@
+<h3><a href="/new_search_form">
+        Try another search
+      </a></h3>
+      <h3>
+<a href="/saved_songs">
+  Saved song library
+</a>
+</h3>
+<h2>Results for your search: (<%= @search.text %>)</h2>
+
+<table>
+  <tr>
+    <th>Song Name</th>
+    <th>Artist</th>
+    </tr>
+
+  <% @result.each do |track| %>
+  <tr>
+    <td>
+    <%= song = track.fetch("track").fetch("track_name")%>
+    </td>
+
+    <td>
+    <%= song_artist = track.fetch("track").fetch("artist_name")%>
+    </td>
+    
+    <td>
+        <form action="/insert_saved_song_record" title="Add to Library" method="post">
+          <input name="song_name" id="song_name" type="hidden" value="<%= track.fetch("track").fetch("track_name") %>">
+          <input name="song_artist" id="artist_name" type="hidden" value="<%= track.fetch("track").fetch("artist_name")%>">
+          <button>Add to Library</button>
+        </form>
+    </td>
+
+  <% end %>
+</table>

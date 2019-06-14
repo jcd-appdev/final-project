@@ -1,0 +1,58 @@
+<h1>
+  Your Song Library
+</h1>
+
+<a href="/new_search_form">
+  Find another song
+</a>
+
+<hr>
+
+<table>
+  <tr>
+    <th>
+      Song
+    </th>
+    <th>
+      Artist
+    </th>
+
+    <th>
+      Updated
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @saved_songs.each do |saved_song| %>
+  <tr>
+    <td>
+      <%= saved_song.song %>
+    </td>
+    
+    <td>
+      <%= saved_song.artist %>
+    </td>
+
+    <td>
+      <%= saved_song.search_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(saved_song.updated_at) %> ago
+    </td>
+
+     <td>
+      <a href="http://www.google.com//search?q=lyrics+<%=  @song_search %>&btnI" data-confirm="Are you sure?">Google Lyrics</a>    
+
+    </td>
+     <td>
+      <a href="https://www.youtube.com/results?search_query=<%=  @song_search %>&btnI" data-confirm="Are you sure?">Youtube</a>    
+    </td>
+        <td><a href="/delete_saved_song/<%= saved_song.id %>">
+      Remove from Library
+    </a></td>
+  </tr>
+  <% end %>
+</table>

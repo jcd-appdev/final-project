@@ -1,0 +1,36 @@
+<h1>
+  Lyrics stuck in your head?
+</h1>
+<h3>
+  Try searching them here to find the song!
+</h3>
+
+<hr>
+
+<%= render("search_templates/validation_failures.html.erb") %>
+
+<form action="/insert_search_record" method="post">
+  <div>
+    <textarea type="text" id="text" name="text" value="<%= @search.text %>"></textarea>
+  </div>
+  
+  <div>
+
+    <input type="hidden" id="user_id" name="user_id" value="<%= @search.user_id %>">
+  </div>
+
+  <button>
+    Find songs
+  </button>
+</form>
+
+<hr>
+<h4><a href="/searches">
+  Searches you've made before
+</a>
+</h4>
+<h4>
+<a href="/saved_songs">
+  Saved song library
+</a>
+</h4>

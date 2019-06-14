@@ -1,0 +1,82 @@
+<h1>
+  Search list
+</h1>
+
+<h3><a href="/new_search_form">
+  Add a new song
+</a></h3>
+<h3><a href="/saved_songs">
+  See your library
+</a></h3>
+<hr>
+
+<table>
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Text
+    </th>
+
+    <th>
+      Song saved
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Created
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @searches.each do |search| %>
+  <tr>
+    <td>
+      <%= search.id %>
+    </td>
+
+    <td>
+      <%= search.text %>
+    </td>
+
+    <td>
+      <%= search.song_saved %>
+    </td>
+
+    <td>
+      <%= search.user_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(search.created_at) %> ago
+    </td>
+
+    <td>
+      <form action="/insert_search_record" method="post">
+        <input type="hidden" id="text" name="text" value="<%= search.text %>">
+        <input type="hidden" id="user_id" name="user_id" value="<%= search.user_id %>">
+        <button>
+        Try this search again!
+        </button>
+      </form>
+    </td>
+  
+    <td>
+      <a href="http://www.google.com/<%= URI.encode(search.text) %>" data-confirm="Are you sure?">Try it on Google</a>    
+    </td>
+      <td>
+      <a href="/delete_search/<%= search.id %>">
+      Delete
+    </a>
+    </td>      
+    
+  </tr>
+  <% end %>
+</table>

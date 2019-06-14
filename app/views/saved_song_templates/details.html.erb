@@ -1,0 +1,44 @@
+<h1>
+  Saved song #<%= @saved_song.id %> details
+</h1>
+
+<div>
+  <div>
+    <a href="/saved_songs">
+      Library
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_saved_song/<%= @saved_song.id %>">
+      Remove
+    </a>
+  </div>
+</div>
+
+<dl>
+  <dt>
+    Search
+  </dt>
+  <dd>
+    <%= @saved_song.search_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@saved_song.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@saved_song.updated_at) %> ago
+  </dd>
+</dl>
+
+<h1><%= @track_id %></h1>
+
+<%= @resultlyrics %>

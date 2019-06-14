@@ -1,0 +1,61 @@
+<h1>
+  Search #<%= @search.id %> details
+</h1>
+
+<div>
+  <div>
+    <a href="/searches">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/existing_search_form/<%= @search.id %>">
+      Edit search
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_search/<%= @search.id %>">
+      Delete search
+    </a>
+  </div>
+</div>
+
+<dl>
+  <dt>
+    Text
+  </dt>
+  <dd>
+    <%= @search.text %>
+  </dd>
+
+  <dt>
+    Song saved
+  </dt>
+  <dd>
+    <%= @search.song_saved %>
+  </dd>
+
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @search.user_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@search.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@search.updated_at) %> ago
+  </dd>
+</dl>
+

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Change Me!</title>
+    <title>Find more songs!</title>
 
     <!-- Expand the characters we can use beyond basic ASCII 🎉 -->
     <meta charset="utf-8">
@@ -17,7 +17,37 @@
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
 
-    <!-- Rails security stuff -->
+<body>      <% if current_user.blank? %>
+        <div>
+          <a href="/users/sign_in">
+            Sign in
+          </a>
+        </div>
+
+        <div>
+          <a href="/users/sign_up">
+            Sign up
+          </a>
+        </div>
+      <% else %>
+        <div>
+          <a href="/users/edit">
+            Edit profile
+          </a>
+        </div>
+
+        <div>
+          <a href="/users/sign_out" data-method="delete">
+            Sign out
+          </a>
+        </div>
+      <% end %>
+    </nav>
+
+    <%= yield %>
+  </body>
+</html>
+
     <%= csrf_meta_tags %>
 
     <!-- START BOOTSTRAP -->
@@ -34,11 +64,3 @@
     <!-- END BOOTSTRAP -->
   </head>
 
-  <body>
-
-    <!-- ↓↓↓ Your view templates all get plugged in below ↓↓↓ -->
-    <%= yield %>
-    <!-- ↑↑↑ Your view templates all get plugged in above ↑↑↑ -->
-    
-  </body>
-</html>

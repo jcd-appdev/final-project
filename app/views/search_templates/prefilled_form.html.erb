@@ -1,0 +1,42 @@
+<h1>
+  Edit search #<%= @search.id %>
+</h1>
+
+<hr>
+
+<%= render("search_templates/validation_failures.html.erb") %>
+
+<form action="/update_search_record/<%= @search.id %>" method="post">
+  <div>
+    <label for="text">
+      Text
+    </label>
+
+    <input type="text" id="text" name="text" value="<%= @search.text %>">
+  </div>
+
+  <div>
+    <input id="song_saved" name="song_saved" type="checkbox" value="1" <%= "checked" if @search.song_saved %>>
+    <label for="song_saved">
+      Song saved
+    </label>
+  </div>
+
+  <div>
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" value="<%= @search.user_id %>">
+  </div>
+
+  <button>
+    Update search
+  </button>
+</form>
+
+<hr>
+
+<a href="/searches">
+  Go back
+</a>

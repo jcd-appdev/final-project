@@ -1,0 +1,27 @@
+<h1>
+  Add a new saved song
+</h1>
+
+<hr>
+
+<%= render("saved_song_templates/validation_failures.html.erb") %>
+
+<form action="/insert_saved_song_record" method="post">
+  <div>
+    <label for="search_id">
+      Search
+    </label>
+
+    <input type="text" id="search_id" name="search_id" value="<%= @saved_song.search_id %>">
+  </div>
+
+  <button>
+    Create saved song
+  </button>
+</form>
+
+<hr>
+
+<a href="/saved_songs">
+  Go back
+</a>
